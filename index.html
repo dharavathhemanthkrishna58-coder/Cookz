@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cookz — Your Chef. Your Kitchen.</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'DM Sans',sans-serif;
+    background:#faf9f6;
+    color:#171717;
+}
+
+/* NAVBAR */
+
+nav{
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(250,249,246,.92);
+    backdrop-filter:blur(15px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid #eee;
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:30px;
+    font-weight:700;
+    color:#111;
+}
+
+.logo span{
+    color:#e85d04;
+}
+
+.nav-links{
+    display:flex;
+    gap:32px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-size:14px;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#e85d04;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:12px;
+}
+
+.login{
+    border:0;
+    background:none;
+    padding:10px 16px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.signup{
+    background:#171717;
+    color:white;
+    border:0;
+    padding:11px 20px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+/* HERO */
+
+.hero{
+    min-height:650px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    padding:70px 7%;
+    gap:50px;
+}
+
+.hero-text{
+    animation:fadeUp .8s ease;
+}
+
+.badge{
+    display:inline-block;
+    background:#fff0e6;
+    color:#d94d00;
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:68px;
+    line-height:1.02;
+    letter-spacing:-2px;
+    margin-bottom:24px;
+}
+
+.hero h1 span{
+    color:#e85d04;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.7;
+    color:#666;
+    max-width:530px;
+    margin-bottom:32px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.primary{
+    background:#e85d04;
+    color:white;
+    padding:15px 25px;
+    border:0;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(232,93,4,.25);
+}
+
+.secondary{
+    padding:15px 25px;
+    border:1px solid #ddd;
+    background:white;
+    border-radius:30px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.hero-image{
+    height:520px;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+    background:
+    linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.15)),
+    url("https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1000&q=85");
+    background-size:cover;
+    background-position:center;
+    box-shadow:0 25px 60px rgba(0,0,0,.15);
+}
+
+.floating-card{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    right:25px;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(10px);
+    border-radius:18px;
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.chef-mini{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.chef-mini img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.chef-mini h4{
+    font-size:14px;
+}
+
+.chef-mini p{
+    font-size:12px;
+    color:#777;
+}
+
+.rating{
+    color:#f59e0b;
+    font-weight:700;
+}
+
+/* SEARCH */
+
+.search-box{
+    margin:-40px auto 70px;
+    width:86%;
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 15px 50px rgba(0,0,0,.1);
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr auto;
+    gap:15px;
+    position:relative;
+    z-index:10;
+}
+
+.input{
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:15px;
+}
+
+.input label{
+    display:block;
+    font-size:11px;
+    color:#999;
+    margin-bottom:5px;
+    text-transform:uppercase;
+}
+
+.input input,
+.input select{
+    width:100%;
+    border:0;
+    outline:0;
+    background:white;
+    font-size:14px;
+}
+
+/* GENERAL */
+
+section{
+    padding:90px 7%;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-heading h2{
+    font-family:'Playfair Display',serif;
+    font-size:46px;
+    margin-bottom:12px;
+}
+
+.section-heading p{
+    color:#777;
+}
+
+/* SERVICES */
+
+.services{
+    background:#171717;
+    color:white;
+}
+
+.services .section-heading p{
+    color:#aaa;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.service{
+    background:#242424;
+    padding:30px;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.service:hover{
+    transform:translateY(-8px);
+    background:#2c2c2c;
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.service h3{
+    margin-bottom:10px;
+}
+
+.service p{
+    color:#aaa;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* CHEFS */
+
+.chef-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.chef-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 30px rgba(0,0,0,.07);
+    transition:.3s;
+}
+
+.chef-card:hover{
+    transform:translateY(-8px);
+}
+
+.chef-img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.chef-info{
+    padding:22px;
+}
+
+.chef-info h3{
+    font-family:'Playfair Display',serif;
+    font-size:24px;
+}
+
+.speciality{
+    color:#777;
+    font-size:14px;
+    margin:5px 0 15px;
+}
+
+.chef-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price{
+    font-weight:700;
+}
+
+.book{
+    background:#171717;
+    color:white;
+    border:0;
+    padding:10px 18px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+/* HOW IT WORKS */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.step{
+    text-align:center;
+}
+
+.step-number{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#fff0e6;
+    color:#e85d04;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:0 auto 20px;
+    font-size:22px;
+    font-weight:700;
+}
+
+.step h3{
+    margin-bottom:10px;
+}
+
+.step p{
+    color:#777;
+    line-height:1.6;
+}
+
+/* CTA */
+
+.cta{
+    margin:60px 7%;
+    border-radius:30px;
+    background:#e85d04;
+    color:white;
+    padding:70px;
+    text-align:center;
+}
+
+.cta h2{
+    font-family:'Playfair Display',serif;
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    opacity:.9;
+    margin-bottom:30px;
+}
+
+.cta button{
+    background:white;
+    color:#e85d04;
+    border:0;
+    padding:15px 28px;
+    border-radius:30px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:white;
+    padding:50px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+footer p{
+    color:#888;
+    font-size:13px;
+}
+
+footer .logo{
+    color:white;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-content{
+    width:90%;
+    max-width:480px;
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    animation:fadeUp .3s ease;
+}
+
+.modal-content h2{
+    font-family:'Playfair Display',serif;
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+.modal-input{
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.close{
+    float:right;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.confirm{
+    width:100%;
+    margin-top:15px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        padding-top:45px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero-image{
+        height:400px;
+    }
+
+    .search-box{
+        grid-template-columns:1fr;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .chef-grid{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .cta{
+        padding:45px 25px;
+    }
+
+    .cta h2{
+        font-size:38px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:20px;
+    }
+}
+
+@media(max-width:500px){
+
+    nav{
+        padding:0 5%;
+    }
+
+    .signup{
+        padding:9px 14px;
+    }
+
+    .hero{
+        padding:40px 5%;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    section{
+        padding:70px 5%;
+    }
+
+    .section-heading h2{
+        font-size:36px;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .primary,
+    .secondary{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+Cook<span>z</span>
+</div>
+
+<ul class="nav-links">
+<li><a href="#services">Services</a></li>
+<li><a href="#chefs">Chefs</a></li>
+<li><a href="#how">How it works</a></li>
+</ul>
+
+<div class="nav-buttons">
+<button class="login" onclick="openModal()">Login</button>
+<button class="signup" onclick="openModal()">Get Started</button>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<div class="badge">
+🍳 Your kitchen. Your chef.
+</div>
+
+<h1>
+Restaurant quality.<br>
+<span>At your home.</span>
+</h1>
+
+<p>
+Book trusted chefs and cooking professionals who come directly to your kitchen. From everyday meals to unforgettable celebrations.
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary" onclick="openModal()">
+Book a Chef →
+</button>
+
+<button class="secondary" onclick="document.getElementById('how').scrollIntoView()">
+How Cookz Works
+</button>
+
+</div>
+
+</div>
+
+
+<div class="hero-image">
+
+<div class="floating-card">
+
+<div class="chef-mini">
+
+<img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=200&q=80">
+
+<div>
+<h4>Chef Arjun</h4>
+<p>North Indian • 8 yrs exp.</p>
+</div>
+
+</div>
+
+<div class="rating">
+★ 4.9
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<div class="input">
+<label>Location</label>
+<input type="text" placeholder="Where are you?">
+</div>
+
+<div class="input">
+<label>Service</label>
+<select>
+<option>Home Cooking</option>
+<option>Event / Function</option>
+<option>Monthly Plan</option>
+<option>Special Diet</option>
+</select>
+</div>
+
+<div class="input">
+<label>Date</label>
+<input type="date">
+</div>
+
+<button class="primary" onclick="openModal()">
+Search
+</button>
+
+</div>
+
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+<div class="section-heading">
+
+<h2>Cookz for every occasion</h2>
+
+<p>
+From a simple dinner to a 200-person celebration.
+</p>
+
+</div>
+
+<div class="service-grid">
+
+<div class="service">
+<div class="icon">🍲</div>
+<h3>Home Cooking</h3>
+<p>Get a professional cook for your everyday breakfast, lunch or dinner.</p>
+</div>
+
+<div class="service">
+<div class="icon">🎉</div>
+<h3>Events & Functions</h3>
+<p>Book chefs and helpers for birthdays, weddings, parties and functions.</p>
+</div>
+
+<div class="service">
+<div class="icon">📅</div>
+<h3>Monthly Plans</h3>
+<p>Reliable breakfast, lunch and dinner cooking plans for busy families.</p>
+</div>
+
+<div class="service">
+<div class="icon">🥗</div>
+<h3>Special Diets</h3>
+<p>Cooking tailored for allergies, low-sugar, low-sodium and other needs.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CHEFS -->
+
+<section id="chefs">
+
+<div class="section-heading">
+
+<h2>Meet your chefs</h2>
+
+<p>Professionals ready to cook in your kitchen.</p>
+
+</div>
+
+<div class="chef-grid">
+
+<div class="chef-card">
+
+<img class="chef-img"
+src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=85">
+
+<div class="chef-info">
+
+<h3>Chef Arjun</h3>
+
+<div class="speciality">
+North Indian • Mughlai • Biryani
+</div>
+
+<div class="chef-bottom">
+
+<div>
+<span class="rating">★ 4.9</span>
+<br>
+<span class="price">₹499 / booking</span>
+</div>
+
+<button class="book" onclick="openModal()">
+Book
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="chef-card">
+
+<img class="chef-img"
+src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?auto=format&fit=crop&w=800&q=85">
+
+<div class="chef-info">
+
+<h3>Chef Priya</h3>
+
+<div class="speciality">
+South Indian • Healthy • Veg
+</div>
+
+<div class="chef-bottom">
+
+<div>
+<span class="rating">★ 4.8</span>
+<br>
+<span class="price">₹449 / booking</span>
+</div>
+
+<button class="book" onclick="openModal()">
+Book
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="chef-card">
+
+<img class="chef-img"
+src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=800&q=85">
+
+<div class="chef-info">
+
+<h3>Chef Rahul</h3>
+
+<div class="speciality">
+Chinese • Continental • Party Food
+</div>
+
+<div class="chef-bottom">
+
+<div>
+<span class="rating">★ 4.9</span>
+<br>
+<span class="price">₹599 / booking</span>
+</div>
+
+<button class="book" onclick="openModal()">
+Book
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section id="how">
+
+<div class="section-heading">
+
+<h2>How Cookz works</h2>
+
+<p>Getting a chef is as simple as ordering food.</p>
+
+</div>
+
+<div class="steps">
+
+<div class="step">
+
+<div class="step-number">1</div>
+
+<h3>Choose your service</h3>
+
+<p>Select home cooking, event, monthly plan or special-diet cooking.</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">2</div>
+
+<h3>Choose your chef</h3>
+
+<p>Compare chefs based on cuisine, ratings, experience and price.</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">3</div>
+
+<h3>Relax & enjoy</h3>
+
+<p>Your chef arrives at your location, cooks fresh food and leaves.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<div class="cta">
+
+<h2>Your kitchen. Your rules.</h2>
+
+<p>
+Tell us what you want to eat. We'll bring the chef.
+</p>
+
+<button onclick="openModal()">
+Book Your First Chef →
+</button>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="logo">
+Cook<span>z</span>
+</div>
+
+<p>
+© 2026 Cookz. Cooked with ambition.
+</p>
+
+</footer>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">×</span>
+
+<h2>Book a Cookz Chef</h2>
+
+<input class="modal-input" placeholder="Your name">
+
+<input class="modal-input" placeholder="Phone number">
+
+<input class="modal-input" placeholder="Location">
+
+<select class="modal-input">
+<option>Home Cooking</option>
+<option>Event / Function</option>
+<option>Monthly Plan</option>
+<option>Special Diet</option>
+</select>
+
+<input class="modal-input" type="date">
+
+<button class="primary confirm" onclick="submitBooking()">
+Request a Chef →
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openModal(){
+    document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
+
+function submitBooking(){
+
+    alert(
+        "🔥 Cookz booking request received!\n\nOur team will contact you shortly."
+    );
+
+    closeModal();
+}
+
+window.onclick=function(event){
+
+    const modal=document.getElementById("modal");
+
+    if(event.target===modal){
+        closeModal();
+    }
+
+}
+
+</script>
+
+</body>
+</html>
